@@ -2,31 +2,25 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'   // make sure Maven is configured in Jenkins
+        maven 'Maven'
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/ArSrini27/devopslab.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn package'
+                bat 'mvn package'
             }
         }
     }
